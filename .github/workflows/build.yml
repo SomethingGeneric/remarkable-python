@@ -1,0 +1,19 @@
+name: Linux Shell Gang
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  Heeho:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v2
+      - name: Do build
+        run: ./build.sh -y
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: py.tgz
