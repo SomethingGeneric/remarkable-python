@@ -46,5 +46,7 @@ cd ../
 rm -rfv Python*
 rm -rfv _install
 
-rm ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi
-mv ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi.save ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi
+if [[ ! "$1" == "-y" ]]; then
+    sudo rm ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi
+    sudo mv ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi.save ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi
+fi
