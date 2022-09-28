@@ -3,9 +3,17 @@
 PY_VER="3.10.7"
 CROSS_ROOT="/usr/local/oecore-x86_64"
 
+TOOLCHAIN_VER="3.1.15"
+
 if [[ ! -d $CROSS_ROOT ]]; then
-    echo "Either you need to install the toolchain, or you haven't edited it's location in the build script"
-    exit 1
+    if [[ "$1" == "-y" ]]; then
+        wget https://storage.googleapis.com/remarkable-codex-toolchain/codex-x86_64-cortexa7hf-neon-rm11x-toolchain-${TOOLCHAIN_VER}.sh
+        chmod +x codex-x86_64-cortexa7hf-neon-rm11x-toolchain-${TOOLCHAIN_VER}.sh
+        ./codex-x86_64-cortexa7hf-neon-rm11x-toolchain-${TOOLCHAIN_VER}.sh -y -d /usr/local/oecore-x86_64
+    else
+        echo "Either no toolchain or wrong path"
+        exit 1
+    fi
 fi
 
 wget https://www.python.org/ftp/python/${PY_VER}/Python-${PY_VER}.tgz
