@@ -1,4 +1,4 @@
-name: Linux Shell Gang
+name: Build the thing
 
 on:
   push:
