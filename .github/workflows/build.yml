@@ -6,8 +6,11 @@ on:
       - "v*.*.*"
 
 jobs:
-  Heeho:
-    runs-on: ubuntu-20.04
+  Build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/crystal-linux/crystal:latest
+      options: --privileged
     steps:
       - name: Get repository
         uses: actions/checkout@v2
