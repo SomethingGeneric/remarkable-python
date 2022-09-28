@@ -12,7 +12,7 @@ jobs:
       - name: Get repository
         uses: actions/checkout@v2
       - name: Do build
-        run: ./build.sh -y
+        run: ./build.sh -g
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
