@@ -19,7 +19,7 @@ if [[ ! -d $CROSS_ROOT ]]; then
 fi
 
 if [[ "$1" == "-g" ]]; then
-    sudo apt install -y python
+    sudo apt install -y python3
 fi
 
 wget https://www.python.org/ftp/python/${PY_VER}/Python-${PY_VER}.tgz
