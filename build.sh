@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 PY_VER="3.10.7"
 CROSS_ROOT="/usr/local/oecore-x86_64"
 
@@ -26,9 +28,9 @@ source ${CROSS_ROOT}/environment-setup-cortexa7hf-neon-remarkable-linux-gnueabi
 [[ -d _install ]] && rm -rf _install
 mkdir _install
 
-cp ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi.save
+sudo cp ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi.save
 
-echo >> ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi << EOF
+echo | sudo tee -a ${CROSS_ROOT}/site-config-cortexa7hf-neon-remarkable-linux-gnueabi << EOF
 # FOR PYTHON
 # i'm just guessing tbh
 ac_cv_file__dev_ptmx=yes
