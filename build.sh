@@ -7,6 +7,11 @@ CROSS_ROOT="/usr/local/oecore-x86_64"
 
 TOOLCHAIN_VER="3.1.15"
 
+if [[ "$1" == "-g" ]]; then
+    sudo pacman -Sy
+    sudo pacman -S --noconfirm python python-pip
+fi
+
 if [[ ! -d $CROSS_ROOT ]]; then
     if [[ "$1" == "-y" || "$1" == "-g" ]]; then
         wget https://storage.googleapis.com/remarkable-codex-toolchain/codex-x86_64-cortexa7hf-neon-rm11x-toolchain-${TOOLCHAIN_VER}.sh
@@ -16,10 +21,6 @@ if [[ ! -d $CROSS_ROOT ]]; then
         echo "Either no toolchain or wrong path"
         exit 1
     fi
-fi
-
-if [[ "$1" == "-g" ]]; then
-    sudo pacman -S python python-pip
 fi
 
 wget https://www.python.org/ftp/python/${PY_VER}/Python-${PY_VER}.tgz
